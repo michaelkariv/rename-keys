@@ -31,4 +31,17 @@ describe('rename keys', function () {
       return renameMap[key];
     }), {a: 4, b: 3, c: 2, d: 1});
   });
+
+    it('should rename keys using deep rename', function () {
+        assert.deepEqual(rename({a: 1, b: { c: 3, d: 4}}, function(key) {
+            var renameMap = {a : 'aa', b: 'bb', c: 'cc', d: 'dd'};
+            return renameMap[key];
+        }, true), {aa: 1, bb: { cc: 3, dd: 4}});
+    });
+    it('should rename keys using shallow rename', function () {
+        assert.deepEqual(rename({a: 1, b: { c: 3, d: 4}}, function(key) {
+            var renameMap = {a : 'aa', b: 'bb', c: 'cc', d: 'dd'};
+            return renameMap[key];
+        }, false), {aa: 1, bb: { c: 3, d: 4}});
+    });
 });

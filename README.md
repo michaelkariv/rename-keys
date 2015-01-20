@@ -59,6 +59,29 @@ results in:
   } ... }
 ```
 
+## Extension  - deep rename (suggested by Michael Kariv, 2015-01-20)
+
+rename function now optionally receives the third boolean parameter. 
+If true, the function renames nested objects' keys.
+
+```js
+var addDashes = function(str) {
+  return '--' + str;
+};
+console.log(rename(pkg, addDashes, true));
+```
+results in:
+
+```js
+{ "--name": "rename-keys",
+  "--description": "Modify the names of the own enumerable properties (keys) of an object.",
+  "--version": "0.1.0",
+  "--homepage": "https://github.com/jonschlinkert/rename-keys",
+  "--author": {
+    "--name": "Jon Schlinkert",
+    "--url": "https://github.com/jonschlinkert"
+  } ... }
+```
 
 ## Authors
 
@@ -66,7 +89,6 @@ results in:
 
 + [twitter/jonschlinkert](http://twitter.com/jonschlinkert)
 + [github/jonschlinkert](https://github.com/jonschlinkert)
-
 
 ## License
 Copyright (c) 2014-2015, Jon Schlinkert.
